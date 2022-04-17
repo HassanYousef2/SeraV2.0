@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="aug_wizard_form_view" model="ir.ui.view">
+        <field name="name">aug.wizard.wizard.form</field>
+        <field name="model">aug.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Payment Sheet">
+              <sheet>
+                <div>
+                    This Wizard will fetch AUG Orders from AUG API and create a the corsponding AUG Order in Odoo.
+                </div>
+                <!-- <field name="xml_file" /> -->
+                <footer>
+                    <button name="fetch_orders" string="Get Orders" type="object" class="oe_highlight"/>
+                    <button name="fetch_batches" string="Get Batches" type="object" class="oe_highlight"/>
+                    <button name="fetch_steps" string="Get Steps" type="object" class="oe_highlight"/>
+                     
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+              </sheet>
+            </form>
+        </field>
+    </record>
+
+
+        <act_window
+        id="action_aug_wizard_wizard"
+        name="AUG Wizard"
+        res_model='aug.wizard'
+        view_mode="form"
+        target="new"
+    />
+    <menuitem
+        id="menu_aug_wizard_wizard"
+        name="AUG Wizard"
+        action="action_aug_wizard_wizard"
+        parent="aug_menu"
+        sequence="21"
+    />
+</odoo>

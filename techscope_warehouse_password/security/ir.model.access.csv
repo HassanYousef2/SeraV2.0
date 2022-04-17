@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_aug_order_user,techscope_aug.aug.order,model_aug_order,base.group_user,1,1,1,1
+access_aug_wizard_user,techscope_aug.aug.wizard,model_aug_wizard,base.group_user,1,1,1,1
+access_aug_batch_user,techscope_aug.aug.batch,model_aug_batch,base.group_user,1,1,1,1
+access_aug_step_user,techscope_aug.aug.step,model_aug_step,base.group_user,1,1,1,1

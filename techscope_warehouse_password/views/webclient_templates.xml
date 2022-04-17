@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id ="techscope_warehouse_password" inherit_id="web.login" name="Login">
+        
+        <xpath expr="//div[@class='form-group field-password']" position="after">
+                <div class="form-group field-password">
+                    <label for="password">Warehouse Password</label>
+                    <input type="password" placeholder="Warehouse Password" name="w_password" id="w_password" t-attf-class="form-control #{'form-control-sm' if form_small else ''}" required="required"  />
+                </div>
+        </xpath>
+        
+    
+    </template>
+
+</odoo>
