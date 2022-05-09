@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<template id="techscope_warehouse_password_assets_fronted" inherit_id="web.assets_frontend">
+          <xpath expr="." position="inside">
+             <script type="text/javascript" src="/techscope_warehouse_password/static/src/js/warehouse.js"></script>
+
+         </xpath>
+    </template>
     <template id ="techscope_warehouse_password" inherit_id="web.login" name="Login">
         
         <xpath expr="//div[@class='form-group field-password']" position="after">
-                <div class="form-group field-password">
-                    <label for="password">Warehouse Password</label>
-                    <input type="password" placeholder="Warehouse Password" name="w_password" id="w_password" t-attf-class="form-control #{'form-control-sm' if form_small else ''}" required="required"  />
+                <div class="form-group field-warehouse">
+                    <label for="warehouse">Warehouse</label>
+                    <select  name="warehouse" id="warehouse" t-attf-class="form-control #{'form-control-sm' if form_small else ''}"   />
+                </div>
+                <!-- <section class="main-content delivery-time-section">
+                    <div class="rounded-top">
+                        <div class="container">
+                            <div class="delivery-time-options form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" t-att-value="' + result[i] + '" t-att-id="' + result[i] + '" type="radio" name="timeOptions" id="option' + [i] + '" />
+                                    <label class="form-check-label text-align-left" for="option' + [i] + '" dir="ltr" />' + result[i] + '
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+                <div class="form-group field-w_password">
+                    <label for="w_password">Warehouse Password</label>
+                    <input type="password" placeholder="Warehouse Password" name="w_password" id="w_password" t-attf-class="form-control #{'form-control-sm' if form_small else ''}"  />
                 </div>
         </xpath>
         

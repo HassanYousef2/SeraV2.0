@@ -6,27 +6,27 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
     
     password = fields.Char(string='Password', copy= False)
-    warehouse_password = fields.Char(string='Password', compute='_get_warehouse_password', store=True)
+    warehouse_id = fields.Char(string='Password', compute='_get_warehouse_id', store=True)
 
     @api.model
     def search_read(self, domain=None, fields=None, offset=0, limit=None, order=None):
-        user_pass = request.session.temp_pass
+        warehouse_id = request.session.warehouse_id
         if domain:
-            domain = ['&', ['warehouse_password', '=', user_pass]] + domain
+            domain = ['&', ['warehouse_id', '=', warehouse_id]] + domain
         else:
-            domain = [('warehouse_password', '=', user_pass)]
+            domain = [('warehouse_id', '=', warehouse_id)]
         return super(StockPicking, self).search_read(domain=domain, fields=fields, offset=offset, limit=limit, order=order)
     @api.depends('location_id.warehouse_id.password')
-    def _get_warehouse_password(self):
+    def _get_warehouse_id(self):
         for rec in self:
             if rec.location_id:
                 warehouse_id = rec.location_id.get_warehouse()
                 if warehouse_id:
-                    rec.warehouse_password = warehouse_id.password
+                    rec.warehouse_id = warehouse_id.id
                 else:
-                    rec.warehouse_password = False
+                    rec.warehouse_id = False
             else:
-                rec.warehouse_password = False
+                rec.warehouse_id = False
     def button_validate(self):
         for rec in self:
             warehouse_id = rec.location_id.get_warehouse()
